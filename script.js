@@ -139,10 +139,17 @@ function searchPackages() {
   const origin = document.getElementById("origin-p").value
   const destination = document.getElementById("destination-p").value
   const travelDate = document.getElementById("travel-date-p").value
-  const nights = parseInt(document.getElementById("nights").value)
+  const nightsInput = parseInt(document.getElementById("nights").value)
 
   const resultsContainer = document.getElementById("results-container-p")
   resultsContainer.innerHTML = ""
+
+  const nights = parseInt(nightsInput)
+  if (isNaN(nights) || nights <= 0) {
+    resultsContainer.innerHTML =
+      "<p>Ingrese una cantidad válida de noches.</p>"
+    return
+  }
 
   if (!origin || !destination || !travelDate) {
     resultsContainer.innerHTML =
