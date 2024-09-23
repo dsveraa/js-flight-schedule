@@ -149,6 +149,8 @@ function searchPackages() {
 
   const nights = parseInt(nightsInput)
   if (isNaN(nights) || nights <= 0) {
+    notificationArea.classList = ""
+    notificationArea.innerHTML = ""
     resultsContainer.classList = "alert alert-warning"
     resultsContainer.innerHTML = "Ingrese una cantidad válida de noches."
     return
@@ -228,6 +230,8 @@ function searchPackages() {
         }
       }
     } else {
+      notificationArea.classList = ""
+      notificationArea.innerHTML = ""
       resultsContainer.classList = "alert alert-danger"
       resultsContainer.innerHTML = `No hay paquetes turísticos disponibles desde <strong>"${origin}"</strong> para la fecha seleccionada.`
     }
