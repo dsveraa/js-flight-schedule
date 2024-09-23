@@ -20,8 +20,9 @@ function searchFlights() {
   resultsContainer.innerHTML = ""
 
   if (!origin || !destination || !travelDate) {
+    resultsContainer.classList = "alert alert-warning"
     resultsContainer.innerHTML =
-      "<p>Falta información, todos los campos son obligatorios.</p>"
+      "Falta información, todos los campos son obligatorios."
     return
   }
 
@@ -49,9 +50,11 @@ function searchFlights() {
               <strong>Fecha:</strong> ${esDate}
               `
         resultsContainer.appendChild(resultDiv)
+        resultsContainer.classList = "alert alert-primary"
       })
     } else {
-      resultsContainer.innerHTML = `<p>No hay vuelos de <strong>"${origin}"</strong> a <strong>"${destination}"</strong> en esta fecha.</p>`
+      resultsContainer.classList = "alert alert-danger"
+      resultsContainer.innerHTML = `No hay vuelos de <strong>"${origin}"</strong> a <strong>"${destination}"</strong> en esta fecha.`
     }
   })
 }
@@ -140,20 +143,23 @@ function searchPackages() {
   const destination = document.getElementById("destination-p").value
   const travelDate = document.getElementById("travel-date-p").value
   const nightsInput = parseInt(document.getElementById("nights").value)
-
+  const notificationArea = document.getElementById("notification-area")
   const resultsContainer = document.getElementById("results-container-p")
   resultsContainer.innerHTML = ""
 
   const nights = parseInt(nightsInput)
   if (isNaN(nights) || nights <= 0) {
-    resultsContainer.innerHTML =
-      "<p>Ingrese una cantidad válida de noches.</p>"
+    resultsContainer.classList = "alert alert-warning"
+    resultsContainer.innerHTML = "Ingrese una cantidad válida de noches."
     return
   }
 
   if (!origin || !destination || !travelDate) {
+    notificationArea.classList = ""
+    notificationArea.innerHTML = ""
+    resultsContainer.classList = "alert alert-warning"
     resultsContainer.innerHTML =
-      "<p>Ingrese un origen, destino, fecha de viaje y número de noches.</p>"
+      "Ingrese un origen, destino, fecha de viaje y número de noches."
     return
   }
 
@@ -191,6 +197,7 @@ function searchPackages() {
           const pkg = new Package(flight, hotel, nights)
           const resultDiv = document.createElement("div")
           resultDiv.innerHTML = pkg.showPackageDetails()
+          resultsContainer.classList = "alert alert-primary"
           resultsContainer.appendChild(resultDiv)
         }
       })
@@ -221,7 +228,8 @@ function searchPackages() {
         }
       }
     } else {
-      resultsContainer.innerHTML = `<p>No hay paquetes turísticos disponibles desde <strong>"${origin}"</strong> para la fecha seleccionada.</p>`
+      resultsContainer.classList = "alert alert-danger"
+      resultsContainer.innerHTML = `No hay paquetes turísticos disponibles desde <strong>"${origin}"</strong> para la fecha seleccionada.`
     }
   })
 }
