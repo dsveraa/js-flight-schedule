@@ -139,38 +139,47 @@
         >
           <div class="search-container">
             <h1>Búsqueda de vuelos</h1>
+            <p>Seleccione su origen, destino y fecha del vuelo:</p>
             <input
               type="text"
               id="origin-f"
               list="cities-origin"
               placeholder="Origen"
+              size="9"
             />
             <datalist id="cities-origin">
-              <option value="Santiago"></option>
+              <option value="Buenos Aires">Buenos Aires</option>
+              <option value="Brasilia">Brasilia</option>
+              <option value="Lima">Lima</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Miami">Miami</option>
+              <option value="Santiago">Santiago</option>
             </datalist>
             <input
               type="text"
               id="destination-f"
               list="cities-destination"
               placeholder="Destino"
+              size="9"
             />
             <datalist id="cities-destination">
-              <option value="Asuncion">Asuncion</option>
-              <option value="Bogota">Bogota</option>
               <option value="Buenos Aires">Buenos Aires</option>
               <option value="Brasilia">Brasilia</option>
-              <option value="Caracas">Caracas</option>
-              <option value="La Paz">La Paz</option>
               <option value="Lima">Lima</option>
               <option value="Madrid">Madrid</option>
               <option value="Miami">Miami</option>
-              <option value="Montevideo">Montevideo</option>
-              <option value="New York">New York</option>
-              <option value="Quito">Quito</option>
+              <option value="Santiago">Santiago</option>
             </datalist>
             <input type="date" id="travel-date-f" />
+            <br /><br />
             <button class="btn btn-secondary btn-sm" onclick="searchFlights()">
               Buscar Vuelos
+            </button>
+            <button
+              class="btn btn-outline-secondary btn-sm"
+              onclick="clearFlightFields()"
+            >
+              Limpiar
             </button>
           </div>
           <div id="results-container-f">
@@ -187,41 +196,48 @@
         >
           <div class="search-container">
             <h1>Búsqueda de paquetes turísticos</h1>
+            <p>
+              Seleccione su origen, destino, fecha del vuelo y cantidad de
+              noches de hotel:
+            </p>
+
             <input
               type="text"
               id="origin-p"
               list="cities-origin"
               placeholder="Origen"
+              size="9"
             />
             <datalist id="cities-origin">
-              <option value="Santiago"></option>
+              <option value="Buenos Aires">Buenos Aires</option>
+              <option value="Brasilia">Brasilia</option>
+              <option value="Lima">Lima</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Miami">Miami</option>
+              <option value="Santiago">Santiago</option>
             </datalist>
             <input
               type="text"
               id="destination-p"
               list="cities-destination"
               placeholder="Destino"
+              size="9"
             />
             <datalist id="cities-destination">
-              <option value="Asuncion">Asuncion</option>
-              <option value="Bogota">Bogota</option>
               <option value="Buenos Aires">Buenos Aires</option>
               <option value="Brasilia">Brasilia</option>
-              <option value="Caracas">Caracas</option>
-              <option value="La Paz">La Paz</option>
               <option value="Lima">Lima</option>
               <option value="Madrid">Madrid</option>
               <option value="Miami">Miami</option>
-              <option value="Montevideo">Montevideo</option>
-              <option value="New York">New York</option>
-              <option value="Quito">Quito</option>
+              <option value="Santiago">Santiago</option>
             </datalist>
             <input type="date" id="travel-date-p" />
             <input
               type="text"
               id="nights"
               list="number-nights"
-              placeholder="Noches"
+              placeholder="Noches de hotel"
+              size="10"
             />
             <datalist id="number-nights">
               <option value="1"></option>
@@ -230,10 +246,16 @@
               <option value="4"></option>
               <option value="5"></option>
               <option value="6"></option>
-              <option value="7"></option>
-            </datalist>
+              <option value="7"></option></datalist
+            ><br /><br />
             <button class="btn btn-secondary btn-sm" onclick="searchPackages()">
               Buscar Paquetes
+            </button>
+            <button
+              class="btn btn-outline-secondary btn-sm"
+              onclick="clearPackagesFields()"
+            >
+              Limpiar
             </button>
           </div>
           <div id="results-container-p">

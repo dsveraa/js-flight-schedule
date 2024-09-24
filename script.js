@@ -167,21 +167,11 @@ function searchPackages() {
 
   loadFlightsFromJSON().then((flights) => {
     const hotels = {
+      Santiago: new Hotel("Ibis Providencia", "Santiago", 56170),
       Lima: new Hotel("JW Marriott Hotel Lima", "Lima", 38140),
       "Buenos Aires": new Hotel("Alvear Palace Hotel", "Buenos Aires", 26823),
       Brasilia: new Hotel("Royal Tulip Brasilia Alvorada", "Brasilia", 41235),
-      Caracas: new Hotel("Hotel Eurobuilding Caracas", "Caracas", 30150),
-      Bogota: new Hotel("Four Seasons Hotel Casa Medina", "Bogota", 45780),
-      Quito: new Hotel("Hotel Plaza Grande", "Quito", 37425),
-      "La Paz": new Hotel("Hotel Presidente", "La Paz", 42160),
-      Asuncion: new Hotel("La Mision Hotel Boutique", "Asuncion", 34890),
-      Montevideo: new Hotel(
-        "Sofitel Montevideo Casino Carrasco",
-        "Montevideo",
-        39240
-      ),
       Madrid: new Hotel("Hotel Ritz Madrid", "Madrid", 85125),
-      "New York": new Hotel("The Plaza Hotel", "New York", 89530),
       Miami: new Hotel("The Ritz-Carlton, South Beach", "Miami", 78255),
     }
 
@@ -236,4 +226,72 @@ function searchPackages() {
       resultsContainer.innerHTML = `No hay paquetes turísticos disponibles desde <strong>"${origin}"</strong> para la fecha seleccionada.`
     }
   })
+}
+
+const countries = [
+  "Buenos Aires",
+  "Brasilia",
+  "Lima",
+  "Madrid",
+  "Miami",
+  "Santiago",
+]
+
+function filterDestinations(inputId, datalistId) {
+  const origin = document.getElementById(inputId).value
+  const datalist = document.getElementById(datalistId)
+
+  datalist.innerHTML = ""
+
+  countries.forEach((country) => {
+    if (country !== origin) {
+      const option = document.createElement("option")
+      option.value = country
+      datalist.appendChild(option)
+    }
+  })
+}
+
+function filterOrigins(inputId, datalistId) {
+  const destination = document.getElementById(inputId).value
+  const datalist = document.getElementById(datalistId)
+
+  datalist.innerHTML = ""
+
+  countries.forEach((country) => {
+    if (country !== destination) {
+      const option = document.createElement("option")
+      option.value = country
+      datalist.appendChild(option)
+    }
+  })
+}
+
+document.getElementById("origin-f").addEventListener("input", function () {
+  filterDestinations("origin-f", "cities-destination")
+})
+
+document.getElementById("destination-f").addEventListener("input", function () {
+  filterOrigins("destination-f", "cities-origin")
+})
+
+document.getElementById("origin-p").addEventListener("input", function () {
+  filterDestinations("origin-p", "cities-destination")
+})
+
+document.getElementById("destination-p").addEventListener("input", function () {
+  filterOrigins("destination-p", "cities-origin")
+})
+
+function clearFlightFields() {
+  document.getElementById('origin-f').value = '';
+  document.getElementById('destination-f').value = '';
+  document.getElementById('travel-date-f').value = '';
+}
+
+function clearPackagesFields() {
+  document.getElementById('origin-p').value = '';
+  document.getElementById('destination-p').value = '';
+  document.getElementById('travel-date-p').value = '';
+  document.getElementById('nights').value = '';
 }
