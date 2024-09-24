@@ -15,7 +15,6 @@ function searchFlights() {
   const origin = document.getElementById("origin-f").value
   const destination = document.getElementById("destination-f").value
   const travelDate = document.getElementById("travel-date-f").value
-
   const resultsContainer = document.getElementById("results-container-f")
   resultsContainer.innerHTML = ""
 
@@ -59,15 +58,6 @@ function searchFlights() {
   })
 }
 
-class Flight {
-  constructor(origin, destination, price, dates) {
-    this.origin = origin
-    this.destination = destination
-    this.price = price
-    this.dates = dates
-  }
-}
-
 class Hotel {
   constructor(name, location, nightPrice) {
     this.name = name
@@ -96,18 +86,12 @@ class Package {
         <h3>Paquete turístico:</h3>
         <strong>Origen</strong>: ${this.flight.origin}<br>
         <strong>Destino:</strong> ${this.flight.destination}<br>
-        <strong>Precio del vuelo:</strong> $${this.flight.price.toLocaleString(
-          "es-ES"
-        )}<br>
+        <strong>Precio del vuelo:</strong> $${this.flight.price.toLocaleString("es-ES")}<br>
         <strong>Hotel:</strong> ${this.hotel.name}<br>
         <strong>Ubicación del hotel:</strong> ${this.hotel.location}<br>
-        <strong>Precio por noche:</strong> $${this.hotel.nightPrice.toLocaleString(
-          "es-ES"
-        )}<br>
+        <strong>Precio por noche:</strong> $${this.hotel.nightPrice.toLocaleString("es-ES")}<br>
         <strong>Número de noches:</strong> ${this.nights}<br>
-        <strong>Precio total del paquete:</strong> $${this.calculatePrice().toLocaleString(
-          "es-ES"
-        )}
+        <strong>Precio total del paquete:</strong> $${this.calculatePrice().toLocaleString("es-ES")}
       `
   }
 }
@@ -229,7 +213,7 @@ function searchPackages() {
   })
 }
 
-const countries = [
+const cities = [
   "Buenos Aires",
   "Brasilia",
   "Lima",
@@ -244,10 +228,10 @@ function filterDestinations(inputId, datalistId) {
 
   datalist.innerHTML = ""
 
-  countries.forEach((country) => {
-    if (country !== origin) {
+  cities.forEach((city) => {
+    if (city !== origin) {
       const option = document.createElement("option")
-      option.value = country
+      option.value = city
       datalist.appendChild(option)
     }
   })
@@ -259,10 +243,10 @@ function filterOrigins(inputId, datalistId) {
 
   datalist.innerHTML = ""
 
-  countries.forEach((country) => {
-    if (country !== destination) {
+  cities.forEach((city) => {
+    if (city !== destination) {
       const option = document.createElement("option")
-      option.value = country
+      option.value = city
       datalist.appendChild(option)
     }
   })
