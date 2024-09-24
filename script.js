@@ -116,9 +116,9 @@ function showSimpleNotification(message, flight, hotel, nights) {
   const notificationArea = document.getElementById("notification-area")
   notificationArea.innerHTML = `
     <h4>${message}</h4>
-    <button id="view-details" class="view-details-button btn btn-sm btn-link">Ver detalles</button>
+    <button id="view-details" class="btn btn-sm btn-link">Ver detalles</button>
   `
-  notificationArea.classList = "blue-border"
+  notificationArea.classList = "alert alert-warning"
 
   const viewDetailsButton = document.getElementById("view-details")
 
@@ -130,6 +130,7 @@ function showSimpleNotification(message, flight, hotel, nights) {
     const resultDiv = document.createElement("div")
     resultDiv.innerHTML = pkg.showPackageDetails()
     resultsContainer.appendChild(resultDiv)
+    resultsContainer.classList = "alert alert-warning"
   })
 }
 
