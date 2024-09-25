@@ -102,7 +102,7 @@ function showSimpleNotification(message, flight, hotel, nights) {
     <h4>${message}</h4>
     <button id="view-details" class="btn btn-sm btn-link">Ver detalles</button>
   `
-  notificationArea.classList = "alert alert-warning"
+  notificationArea.classList = "alert alert-warning text-center"
 
   const viewDetailsButton = document.getElementById("view-details")
 
